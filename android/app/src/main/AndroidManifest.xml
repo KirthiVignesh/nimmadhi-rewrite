@@ -1,4 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+<uses-permission android:name="android.permission.health.READ_HEART_RATE"/>
+<uses-permission android:name="android.permission.health.WRITE_HEART_RATE"/>
     <application
         android:label="nimmadhi"
         android:name="${applicationName}"
@@ -30,4 +33,7 @@
             android:name="flutterEmbedding"
             android:value="2" />
     </application>
+    <queries>
+    <package android:name="com.google.android.apps.healthdata" />
+</queries>
 </manifest>
