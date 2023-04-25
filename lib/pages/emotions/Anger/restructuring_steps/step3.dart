@@ -1,0 +1,330 @@
+import 'package:flutter/material.dart';
+import 'package:share_plus/share_plus.dart';
+import 'display_text.dart';
+import 'edit_text.dart';
+
+class Step3 extends StatefulWidget {
+  @override
+  _Step3State createState() => _Step3State();
+}
+
+class _Step3State extends State<Step3> with TickerProviderStateMixin {
+  final double infoHeight = 364.0;
+  AnimationController? animationController;
+  Animation<double>? animation;
+  double opacity1 = 0.0;
+  double opacity2 = 0.0;
+  double opacity3 = 0.0;
+  @override
+  void initState() {
+    animationController = AnimationController(
+        duration: const Duration(milliseconds: 1000), vsync: this);
+    animation = Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+        parent: animationController!,
+        curve: Interval(0, 1.0, curve: Curves.fastOutSlowIn)));
+    setData();
+    super.initState();
+  }
+
+  Future<void> setData() async {
+    animationController?.forward();
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    setState(() {
+      opacity1 = 1.0;
+    });
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    setState(() {
+      opacity2 = 1.0;
+    });
+    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
+    setState(() {
+      opacity3 = 1.0;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final double tempHeight = MediaQuery.of(context).size.height -
+        (MediaQuery.of(context).size.width / 1.2) +
+        24.0;
+    return Container(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: <Widget>[
+            Column(
+              children: <Widget>[
+                AspectRatio(
+                  aspectRatio: 1.2,
+                  child: FittedBox(
+                    child: Image.asset('assets/images/the_thought.gif'),
+                    fit: BoxFit.fill,
+                  ),
+                ),
+              ],
+            ),
+            Positioned(
+              top: (MediaQuery.of(context).size.width / 1.2) - 24.0,
+              bottom: 0,
+              left: 0,
+              right: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(32.0),
+                      topRight: Radius.circular(32.0)),
+                  boxShadow: <BoxShadow>[
+                    BoxShadow(offset: const Offset(1.1, 1.1), blurRadius: 10.0),
+                  ],
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 8, right: 8),
+                  child: SingleChildScrollView(
+                    child: Container(
+                      constraints: BoxConstraints(
+                          minHeight: infoHeight,
+                          maxHeight: tempHeight > infoHeight
+                              ? tempHeight
+                              : infoHeight),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 32.0, left: 18, right: 16),
+                            child: Text(
+                              'Step 3:The thought',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 30,
+                                letterSpacing: 0.27,
+                              ),
+                            ),
+                          ),
+                          AnimatedOpacity(
+                            duration: const Duration(milliseconds: 500),
+                            opacity: opacity1,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8),
+                              child: Row(
+                                children: <Widget>[
+                                  //getTimeBoxUI('5min', 'Practice'),
+                                  //getTimeBoxUI('1 time', 'Day'),
+                                  //getTimeBoxUI('', 'Seat'),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: AnimatedOpacity(
+                              duration: const Duration(milliseconds: 500),
+                              opacity: opacity2,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 16, right: 16, top: 8, bottom: 8),
+                                child: SingleChildScrollView(
+                                  child: Text(
+                                    'You identify your thoughts about the situation that are underlying your upsetting feelings. If you are unsure what those thoughts are, ask yourself the following questions, depending on what your upsetting feelings were:\n\n• For fear or anxiety, ask yourself, “What bad thing do I expect to happen?” “What kind of danger am I in?”\n• For sadness or depression, ask yourself, “What have I lost hope in?” “What is missing in my life or in me?”\n• For guilt or shame, ask yourself, “What bad thing have I done?” “What is wrong with me?”\n• For anger, ask yourself, “What is unfair about this situation?” “Who has wronged me?”',
+                                    textAlign: TextAlign.justify,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 17,
+                                      letterSpacing: 0.27,
+                                    ),
+                                    maxLines: 50,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(child: DisplayText(steps: '3')),
+                          AnimatedOpacity(
+                            duration: const Duration(milliseconds: 500),
+                            opacity: opacity3,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 16, bottom: 16, right: 16),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  // Container(
+                                  //   width: 48,
+                                  //   height: 48,
+                                  //   child: Container(
+                                  //     decoration: BoxDecoration(
+                                  //       color: DesignCourseAppTheme.nearlyWhite,
+                                  //       borderRadius: const BorderRadius.all(
+                                  //         Radius.circular(16.0),
+                                  //       ),
+                                  //       border: Border.all(
+                                  //           color: DesignCourseAppTheme.grey
+                                  //               .withOpacity(0.2)),
+                                  //     ),
+                                  //     child: Icon(
+                                  //       Icons.add,
+                                  //       color: DesignCourseAppTheme.nearlyBlue,
+                                  //       size: 28,
+                                  //     ),
+                                  //   ),
+                                  // ),
+                                  // const SizedBox(
+                                  //   width: 16,
+                                  // ),
+                                  Expanded(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  EditText(steps: '3')),
+                                        );
+                                      },
+                                      child: Container(
+                                        height: 48,
+                                        decoration: BoxDecoration(
+                                          borderRadius: const BorderRadius.all(
+                                            Radius.circular(16.0),
+                                          ),
+                                          boxShadow: <BoxShadow>[
+                                            BoxShadow(
+                                                offset: const Offset(1.1, 1.1),
+                                                blurRadius: 10.0),
+                                          ],
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            'Type Here',
+                                            textAlign: TextAlign.left,
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 18,
+                                              letterSpacing: 0.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: MediaQuery.of(context).padding.bottom,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Positioned(
+              top: (MediaQuery.of(context).size.width / 1.2) - 24.0 - 35,
+              right: 35,
+              child: ScaleTransition(
+                alignment: Alignment.center,
+                scale: CurvedAnimation(
+                    parent: animationController!, curve: Curves.fastOutSlowIn),
+                child: InkWell(
+                  onTap: () async {
+                    await Share.share(
+                        'Evaluate the thought\nYou want to evaluate the accuracy of your upsetting thought as carefully and objectively as possible. To do this, first think of all of the evidence you can that supports your thought or makes you think it is accurate. For example, for the thought You said “hello” to an old friend, and that friend ignored you.” the person could ask. Write all the evidence down on the worksheet.\nThen, think of all the evidence you can that does not support your thought, or suggests it may not be accurate. Consider as many reasons as you can for why your thought might not be correct. Then, write all the evidence against the thought down on the worksheet');
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50.0)),
+                    elevation: 10.0,
+                    child: Container(
+                      width: 60,
+                      height: 60,
+                      child: Center(
+                        child: Icon(
+                          Icons.share,
+                          size: 30,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+              child: SizedBox(
+                width: AppBar().preferredSize.height,
+                height: AppBar().preferredSize.height,
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    borderRadius:
+                        BorderRadius.circular(AppBar().preferredSize.height),
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                    ),
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Widget getTimeBoxUI(String text1, String txt2) {
+  //   return Padding(
+  //     padding: const EdgeInsets.all(8.0),
+  //     child: Container(
+  //       decoration: BoxDecoration(
+  //         color: DesignCourseAppTheme.nearlyWhite,
+  //         borderRadius: const BorderRadius.all(Radius.circular(16.0)),
+  //         boxShadow: <BoxShadow>[
+  //           BoxShadow(
+  //               color: DesignCourseAppTheme.grey.withOpacity(0.2),
+  //               offset: const Offset(1.1, 1.1),
+  //               blurRadius: 8.0),
+  //         ],
+  //       ),
+  //       child: Padding(
+  //         padding: const EdgeInsets.only(
+  //             left: 18.0, right: 18.0, top: 12.0, bottom: 12.0),
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.center,
+  //           crossAxisAlignment: CrossAxisAlignment.center,
+  //           children: <Widget>[
+  //             Text(
+  //               text1,
+  //               textAlign: TextAlign.center,
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.w600,
+  //                 fontSize: 14,
+  //                 letterSpacing: 0.27,
+  //                 color: DesignCourseAppTheme.nearlyBlue,
+  //               ),
+  //             ),
+  //             Text(
+  //               txt2,
+  //               textAlign: TextAlign.center,
+  //               style: TextStyle(
+  //                 fontWeight: FontWeight.w200,
+  //                 fontSize: 14,
+  //                 letterSpacing: 0.27,
+  //                 color: DesignCourseAppTheme.grey,
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
+}

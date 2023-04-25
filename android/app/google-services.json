@@ -1,0 +1,107 @@
+{
+  "project_info": {
+    "project_number": "1074990192023",
+    "firebase_url": "https://nimadhi-46e15-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "nimadhi-46e15",
+    "storage_bucket": "nimadhi-46e15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074990192023:android:bbd02586197f33a284a0d2",
+        "android_client_info": {
+          "package_name": "com.example.agni"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074990192023-3t0hopfob5faq8rncq0j6ingt54fsndm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agni",
+            "certificate_hash": "dc6583e718afd3d8c0393a59ef8ae67d8caecd53"
+          }
+        },
+        {
+          "client_id": "1074990192023-co0munoc4dsq9vkt6u6gofcstsuqpak0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agni",
+            "certificate_hash": "6a0f657c05254a0fb1c93b5d6cf4c070bce18ea1"
+          }
+        },
+        {
+          "client_id": "1074990192023-dg210qt7n4075lol6p31ps6o83j2n01p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.agni",
+            "certificate_hash": "500934488cb18bad23464f135ab9f76edf091f35"
+          }
+        },
+        {
+          "client_id": "1074990192023-tne841e1sofladulprq3hv758e6qn436.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqBt_1bMTIokZcTqPAnXvlR-mSEpKz0Lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074990192023-tne841e1sofladulprq3hv758e6qn436.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1074990192023-mn5f39ql9dk446rkd037mcogc4rbqbn0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplicationMindfulness"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074990192023:android:f028a71be75ac35884a0d2",
+        "android_client_info": {
+          "package_name": "com.example.nimmadhi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074990192023-tne841e1sofladulprq3hv758e6qn436.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqBt_1bMTIokZcTqPAnXvlR-mSEpKz0Lg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074990192023-tne841e1sofladulprq3hv758e6qn436.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1074990192023-mn5f39ql9dk446rkd037mcogc4rbqbn0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flutterApplicationMindfulness"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
