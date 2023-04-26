@@ -233,7 +233,7 @@ class _ProfilePageState extends State<ProfilePage> {
             // backgroundColor: Colors.white,
             // foregroundColor: Colors.indigo,
             onPressed: () {
-              // HealthDataExample;
+              // HalthDataExample;
             },
             child: Icon(FlutterRemix.heart_2_line),
           ),

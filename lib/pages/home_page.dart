@@ -1,3 +1,10 @@
+// import 'package:nimmadhi/pages/chat_bot.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:nimmadhi/pages/emotions/Anger/cognitive_reappraisal.dart';
+import 'package:nimmadhi/pages/emotions/Anger/cognitive_restructuring.dart';
+import 'package:nimmadhi/pages/emotions/Anxiety/being_mindful.dart';
+import 'package:nimmadhi/pages/emotions/Sad/emotional_support.dart';
 import 'package:nimmadhi/streamer/player.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -5,6 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:nimmadhi/quiz/screens/quiz/welcome_screen.dart';
 
 import '../quiz/screens/quiz/welcome_screen2.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -33,9 +42,52 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  final _summaryController = TextEditingController();
+
+  void ask() async {
+    var result = "";
+    const url = "https://nimmadhi-assistant.onrender.com/ask";
+    Map data = {"summary": _summaryController.text};
+    var body = json.encode(data);
+    var response = await http.post(Uri.parse(url),
+        headers: {"Content-Type": "application/json"}, body: body);
+    result = response.body;
+    print(result);
+    if (result == 'cognitive-reappraisal') {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => CognitiveReappraisal()));
+    } else if (result == 'cognitive-restructuring') {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => CognitiveRestructuring()));
+    } else if (result == 'all-or-nothing') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => EmotionalSupport()));
+    } else if (result == 'overgeneralization') {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => BeingMindful()));
+    } else {
+      // print('executed');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          elevation: 0,
+          behavior: SnackBarBehavior.floating,
+          backgroundColor: Colors.transparent,
+          content: Text('Move to the emotions page.'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: () {
+        //     Navigator.of(context)
+        //         .push(MaterialPageRoute(builder: (context) => Chatbot()));
+        //   },
+        //   child: const Icon(Icons.chat_rounded),
+        // ),
         body: SafeArea(
       child: Container(
         // decoration: BoxDecoration(
@@ -105,6 +157,34 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              SizedBox(height: 20),
+              Text("Describe your current mood",
+                  style: TextStyle(
+                    fontSize: 28,
+                  )),
+              TextField(
+                controller: _summaryController,
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        // borderSide: BorderSide(color: Colors.white),
+                        borderRadius: BorderRadius.circular(12)),
+                    focusedBorder: OutlineInputBorder(
+                        // borderSide: BorderSide(color: Colors.indigo),
+                        borderRadius: BorderRadius.circular(12)),
+                    hintText: 'Describe your day',
+                    filled: true),
+              ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: TextButton(
+                  child: Text("Redirect page"),
+
+                  // Sicon: const Icon(Icons.send_rounded),
+                  onPressed: ask,
+                ),
+              ),
+              // Text(result),
               SizedBox(height: 20),
               Text("Evaluate yourself ✅",
                   style: TextStyle(
